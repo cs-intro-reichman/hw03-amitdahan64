@@ -7,7 +7,8 @@ public class Calendar1 {
 	static int month = 1;
 	static int year = 1900;
 	static int dayOfWeek = 2;     // 1.1.1900 was a Monday
-	static int nDaysInMonth = 31; // Number of days in January
+	static int nDaysInMonth = 31;
+	static int specialSundayCounter = 0; // Number of days in January
 	
 	/** 
 	 * Prints the calendars of all the years in the 20th century. Also prints the  
@@ -20,9 +21,11 @@ public class Calendar1 {
 	    int debugDaysCounter = 0; 
 	    //// Write the necessary initialization code, and replace the condition
 	    //// of the while loop with the necessary condition 
+	    
 	 	while (!(month == 1 && year == 2000 && dayOfMonth == 1)) {
 	 		if(dayOfWeek == 1){
 	 			System.out.println(dayOfMonth + "/" + month + "/" + year + " Sunday");
+	 			
 	 		}	
 	 		else{
 	 			System.out.println(dayOfMonth + "/" + month + "/" + year);
@@ -35,7 +38,7 @@ public class Calendar1 {
 	 			break;
 	 		}
         }
-	 	//// Write the necessary ending code here
+	 	System.out.println("During the 20th century, "+ specialSundayCounter +" Sundays fell on the first day of the month");
 	 }
 	
 	 // Advances the date (day, month, year) and the day-of-the-week.
@@ -45,6 +48,7 @@ public class Calendar1 {
 		int days = nDaysInMonth(month,year);
 		if(dayOfMonth == days){ //checks if month changes tomorrow
 			dayOfMonth = 1;
+			if(dayOfWeek == 1)specialSundayCounter++;
 
 			if(dayOfWeek == 7) //checks if its saturday
 			{
